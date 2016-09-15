@@ -37,22 +37,27 @@ public class BaseState extends State {
             public void onDown() {
 
             }
+
+            @Override
+            public void onTouch() {
+
+            }
         }));
     }
 
     @Override
     public void handleInput() {
         if(Gdx.input.justTouched()){
-            /*ShiftState shiftState = (ShiftState) manager.getState("ShiftState");
-            shiftState.setShift("SquatState", 1);
-            manager.set(shiftState);*/
+//            ShiftState shiftState = (ShiftState) manager.getState("ShiftState");
+//            shiftState.setShift("SquatState", 1);
+//            manager.set(shiftState);
         }
     }
 
     @Override
     public void update(float timeDifference) {
         handleInput();
-        player.increment();
+        player.update(timeDifference);
     }
 
     @Override
@@ -61,7 +66,8 @@ public class BaseState extends State {
         batch.setTransformMatrix(camera.view);
         batch.begin();
         batch.draw(background, 0, 0);
-        batch.draw(player.getImage(), player.getPosition().x, player.getPosition().y);
+//      batch.draw(player.getImage(), player.getPosition().x, player.getPosition().y);
+        player.draw(batch);
         batch.end();
     }
 

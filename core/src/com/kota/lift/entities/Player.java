@@ -1,12 +1,13 @@
 package com.kota.lift.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 
 /**
  * Created by Kota on 2016.07.29..
  */
-public class Player {
+public class Player extends Entity{
     private Vector3 position;
     private Texture image;
     private int frame;
@@ -44,5 +45,15 @@ public class Player {
 
     public Texture getImage() {
         return image;
+    }
+
+    @Override
+    public void update(float deltaTime) {
+        increment();
+    }
+
+    @Override
+    public void draw(SpriteBatch batch) {
+        batch.draw(image, position.x, position.y);
     }
 }

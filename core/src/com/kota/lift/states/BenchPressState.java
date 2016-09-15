@@ -31,6 +31,11 @@ public class BenchPressState extends State{
             public void onDown() {
 
             }
+
+            @Override
+            public void onTouch() {
+
+            }
         }));
     }
 
