@@ -6,6 +6,7 @@ package com.kota.lift.states;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,12 +20,14 @@ public class GameStateManager {
     private AssetManager assetManager;
     private StateFactory factory;
     private OrthographicCamera camera;
+    private Viewport viewport;
 
-    public GameStateManager(AssetManager manager, StateFactory factory, OrthographicCamera camera){
+    public GameStateManager(AssetManager manager, StateFactory factory, OrthographicCamera camera, Viewport viewport){
         states = new Stack<State>();
         this.assetManager=manager;
         this.camera=camera;
         this.factory=factory;
+        this.viewport=viewport;
     }
 
     public void push(State state){
@@ -54,5 +57,9 @@ public class GameStateManager {
 
     public State getState(String stateType){
         return factory.makeState(stateType, this, camera);
+    }
+
+    public Viewport getViewport() {
+        return viewport;
     }
 }

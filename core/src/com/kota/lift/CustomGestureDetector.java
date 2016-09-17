@@ -15,7 +15,7 @@ public class CustomGestureDetector extends GestureDetector {
 
         void onDown();
 
-        void onTouch();
+        void onTouch(float x, float y, int pointer);
     }
 
     public CustomGestureDetector(DirectionListener directionListener) {
@@ -49,7 +49,7 @@ public class CustomGestureDetector extends GestureDetector {
 
         @Override
         public boolean touchDown(float x, float y, int pointer, int button){
-            directionListener.onTouch();
+            directionListener.onTouch(x, y, pointer);
             return super.touchDown(x, y, pointer, button);
         }
     }

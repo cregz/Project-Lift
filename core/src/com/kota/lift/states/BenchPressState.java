@@ -33,7 +33,7 @@ public class BenchPressState extends State{
             }
 
             @Override
-            public void onTouch() {
+            public void onTouch(float x, float y, int pointer) {
 
             }
         }));

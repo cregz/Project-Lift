@@ -1,7 +1,10 @@
 package com.kota.lift.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 
 /**
@@ -13,11 +16,15 @@ public class Player extends Entity{
     private int frame;
     private int counter;
 
+    private ShapeRenderer debugRenderer;
+
     public Player(int x, int y) {
         this.position = new Vector3(x, y, 0);
         this.image = new Texture("character_0.png");
         this.frame = 0;
         this.counter = 0;
+
+        this.debugRenderer=new ShapeRenderer();
     }
 
     public void increment(){
@@ -55,5 +62,12 @@ public class Player extends Entity{
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(image, position.x, position.y);
+    }
+
+    private void debugRender() {
+        debugRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        debugRenderer.setColor(Color.MAROON);
+        debugRenderer.rect(50,100,50,100);
+        debugRenderer.end();
     }
 }

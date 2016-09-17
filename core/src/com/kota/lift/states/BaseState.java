@@ -39,7 +39,7 @@ public class BaseState extends State {
             }
 
             @Override
-            public void onTouch() {
+            public void onTouch(float x, float y, int pointer) {
 
             }
         }));
