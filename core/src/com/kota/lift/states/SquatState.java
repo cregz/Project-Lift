@@ -83,8 +83,6 @@ public class SquatState extends State {
 
     private void markTouchPosition(float x, float y) {
         lastTouchPosition=new Vector2(manager.getViewport().unproject(new Vector2(x,y)));
-        lastTouchPosition.x-=lastTouchRadius/2;
-        lastTouchPosition.y-=lastTouchRadius/2;
     }
 
     private boolean isInCircle(float x, float y) {
@@ -150,7 +148,7 @@ public class SquatState extends State {
         debugRenderer.setColor(Color.CORAL);
         debugRenderer.circle(circleOrigin.x, circleOrigin.y, circleOrigin.z);
         debugRenderer.setColor(Color.FOREST);
-        debugRenderer.circle(lastTouchPosition.x+lastTouchRadius/2, lastTouchPosition.y+lastTouchRadius/2, lastTouchRadius);
+        debugRenderer.circle(lastTouchPosition.x, lastTouchPosition.y, lastTouchRadius);
         debugRenderer.end();
     }
 
